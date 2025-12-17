@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { Game } from './types';
 import { GAMES_LIST } from './constants';
 import { GameCard } from './components/GameCard';
@@ -18,6 +18,13 @@ const OddChoiceLogo = () => (
 const App: React.FC = () => {
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
 
+  // 按发布日期倒序排列（最新的在前面）
+  const sortedGames = useMemo(() => {
+    return [...GAMES_LIST].sort((a, b) => 
+      new Date(b.releaseDate).getTime() - new Date(a.releaseDate).getTime()
+    );
+  }, []);
+
   return (
     <div className="min-h-screen bg-stone-100 bg-grain text-stone-900 font-sans selection:bg-[#dc2626] selection:text-white">
       
@@ -32,7 +39,7 @@ const App: React.FC = () => {
 
         {/* Game Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-8">
-          {GAMES_LIST.map((game) => (
+          {sortedGames.map((game) => (
             <GameCard 
               key={game.id} 
               game={game} 
