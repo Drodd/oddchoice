@@ -9,6 +9,10 @@ export interface Game {
    */
   path: string;
   tags: string[];
+  /**
+   * 发布日期，格式：YYYY-MM-DD
+   */
+  releaseDate: string;
 }
 
 export interface ChatMessage {

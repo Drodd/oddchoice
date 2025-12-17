@@ -32,9 +32,14 @@ export const GameCard: React.FC<GameCardProps> = ({ game, onClick }) => {
 
       {/* Content */}
       <div className="p-4 bg-white">
-        <h3 className="text-lg font-black text-black uppercase tracking-tighter mb-2 leading-none">
-          {game.title}
-        </h3>
+        <div className="flex items-start justify-between gap-2 mb-2">
+          <h3 className="text-lg font-black text-black uppercase tracking-tighter leading-none">
+            {game.title}
+          </h3>
+          <span className="text-[10px] font-mono text-stone-400 whitespace-nowrap">
+            {game.releaseDate}
+          </span>
+        </div>
         
         <div className="flex flex-wrap gap-2 mb-3">
           {game.tags.slice(0, 2).map(tag => (
