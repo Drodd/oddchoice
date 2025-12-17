@@ -68,10 +68,14 @@ const isDarkColor = (color: string): boolean => {
   return true;
 };
 
-// 格式化日期为中文格式
-const formatDateChinese = (dateStr: string): string => {
+// 格式化日期为简短中文格式
+const formatDateShort = (dateStr: string): string => {
   const [year, month, day] = dateStr.split('-');
-  return `${year}年${month}月${day}日创作记录`;
+  // 去掉前导零
+  const shortYear = year.slice(2);
+  const shortMonth = parseInt(month, 10);
+  const shortDay = parseInt(day, 10);
+  return `${shortYear}年${shortMonth}月${shortDay}日`;
 };
 
 export const GameCard: React.FC<GameCardProps> = ({ game, onClick }) => {
@@ -207,8 +211,9 @@ export const GameCard: React.FC<GameCardProps> = ({ game, onClick }) => {
           {/* Title */}
           <div className="border-b border-stone-700 pb-3 mb-4">
             <h3 className="text-sm font-bold text-white leading-tight font-mono">
-              {formatDateChinese(game.releaseDate)}
+              {formatDateShort(game.releaseDate)}
             </h3>
+            <p className="text-[10px] font-mono text-stone-500 mt-1">创作记录</p>
           </div>
           
           {/* Story Content */}

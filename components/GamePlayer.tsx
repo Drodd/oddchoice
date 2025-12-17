@@ -111,13 +111,6 @@ export const GamePlayer: React.FC<GamePlayerProps> = ({ game, onClose }) => {
         </div>
       </div>
       
-      {/* Mobile hint */}
-      {!isFullscreen && (
-        <div className="absolute bottom-4 left-0 right-0 text-center text-black/50 font-bold text-xs md:hidden pointer-events-none uppercase tracking-widest">
-            9:16 竖屏模式
-        </div>
-      )}
-
     </div>
   );
 };
