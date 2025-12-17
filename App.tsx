@@ -3,36 +3,15 @@ import { Game } from './types';
 import { GAMES_LIST } from './constants';
 import { GameCard } from './components/GameCard';
 import { GamePlayer } from './components/GamePlayer';
+import logoImage from './logo.png';
 
 const OddChoiceLogo = () => (
   <div className="flex flex-col items-center">
-    {/* Icon */}
-    <svg width="120" height="120" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="mb-2">
-      {/* Black Circle with gap at bottom */}
-      <path 
-        d="M 85 80 A 45 45 0 1 0 15 80" 
-        stroke="black" 
-        strokeWidth="12" 
-        strokeLinecap="butt"
-      />
-      {/* Red Keyhole Shape */}
-      <path 
-        d="M 50 40 A 12 12 0 1 0 50 64 L 60 90 L 40 90 L 50 64" 
-        fill="#dc2626"
-      />
-      {/* Refined Keyhole top circle to ensure it looks solid */}
-      <circle cx="50" cy="48" r="10" fill="#dc2626" /> 
-      {/* Keyhole base/stand */}
-      <path d="M 42 55 L 58 55 L 65 92 L 35 92 Z" fill="#dc2626" />
-    </svg>
-    
-    {/* Text */}
-    <h1 className="text-4xl md:text-5xl font-black uppercase tracking-tighter text-black" style={{ fontFamily: 'Impact, sans-serif' }}>
-      ODD <span className="text-stone-800">CHOICE</span>
-    </h1>
-    
-    {/* Distress/Grunge Texture Overlay effect on text could go here, keeping it simple for CSS */}
-    <div className="h-1 w-24 bg-[#dc2626] mt-2"></div>
+    <img 
+      src={logoImage} 
+      alt="Odd Choice Logo" 
+      className="w-48 md:w-64 h-auto"
+    />
   </div>
 );
 
