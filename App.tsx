@@ -33,7 +33,7 @@ const App: React.FC = () => {
         <header className="flex flex-col items-center mb-16 text-center">
           <OddChoiceLogo />
           <p className="mt-6 text-stone-500 font-mono text-sm max-w-md mx-auto border-y border-stone-300 py-2 uppercase tracking-wide">
-            实验 • 复古 • 独立
+            古怪 • 独立 • 走心
           </p>
         </header>
 

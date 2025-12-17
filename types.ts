@@ -1,6 +1,7 @@
 export interface Game {
   id: string;
   title: string;
+  titleEn: string;
   description: string;
   coverUrl: string;
   /**
@@ -13,6 +14,10 @@ export interface Game {
    * 发布日期，格式：YYYY-MM-DD
    */
   releaseDate: string;
+  /**
+   * 创作故事，展示在卡片背面
+   */
+  story: string;
 }
 
 export interface ChatMessage {
