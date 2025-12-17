@@ -1,0 +1,138 @@
+import { Game } from './types';
+
+// INSTRUCTIONS FOR USER:
+// 1. To add a local game, place the game folder in your public directory (e.g., 'public/games/my-game/').
+// 2. Set the 'path' to '/games/my-game/index.html'.
+// 3. To add a hosted game (like the ones below), just set the 'path' to the full URL (https://...).
+
+export const GAMES_LIST: Game[] = [
+  // --- USER GAMES (HOSTED) ---
+  {
+    id: 'key-choice',
+    title: '关键选择',
+    description: '一款叙事决策游戏，每一个选择都至关重要。你能做出正确的决定吗？',
+    coverUrl: 'https://placehold.co/400x600/e11d48/FFF?text=Key+Choice',
+    path: 'https://keychoice.netlify.app/',
+    tags: ['叙事', '抉择', '角色扮演'],
+  },
+  {
+    id: 'perfect-date',
+    title: '完美约会',
+    description: '模拟现代约会的复杂性。尽量别破坏气氛。',
+    coverUrl: 'https://placehold.co/400x600/pink/black?text=Perfect+Date',
+    path: 'https://perfectdate.netlify.app/',
+    tags: ['模拟', '恋爱', '休闲'],
+  },
+  {
+    id: 'mask-shop',
+    title: '假面商店',
+    description: '经营一家出售能满足欲望的面具的神秘商店。代价是什么？',
+    coverUrl: 'https://placehold.co/400x600/4c1d95/white?text=Mask+Shop',
+    path: 'https://desiremaskshop.netlify.app/',
+    tags: ['经营', '悬疑', '大亨'],
+  },
+  {
+    id: 'indie-dev',
+    title: '独游发展国',
+    description: '独立开发者的奋斗史。写代码，做设计，尽量别把自己累垮。',
+    coverUrl: 'https://placehold.co/400x600/1e293b/white?text=Indie+Dev',
+    path: 'https://endearing-lolly-ecae68.netlify.app/',
+    tags: ['模拟', '大亨', '策略'],
+  },
+  {
+    id: 'dinner-sim',
+    title: '饭局模拟器',
+    description: '在正式晚宴的社交雷区中穿行。礼仪就是一切。',
+    coverUrl: 'https://placehold.co/400x600/f59e0b/black?text=Dinner+Sim',
+    path: 'https://abigdeal.netlify.app/',
+    tags: ['社交', '模拟', '搞笑'],
+  },
+  {
+    id: 'light-shadow',
+    title: '光影对决',
+    description: '光与影的视觉对决。快节奏的街机动作游戏。',
+    coverUrl: 'https://placehold.co/400x600/black/white?text=Clair+Obscur',
+    path: 'https://clairobscur.netlify.app/',
+    tags: ['动作', '街机', '艺术'],
+  },
+  {
+    id: 'tony',
+    title: '剪刀手托尼',
+    description: '托尼的手是剪刀。帮他剪头发，别剪耳朵。',
+    coverUrl: 'https://placehold.co/400x600/0ea5e9/white?text=Tony',
+    path: 'https://amazingtony.netlify.app/',
+    tags: ['休闲', '造型师', '技巧'],
+  },
+  {
+    id: 'subway',
+    title: '地铁睡神',
+    description: '别坐过站！公共交通小睡的终极考验。',
+    coverUrl: 'https://placehold.co/400x600/10b981/white?text=Subway',
+    path: 'https://subwaygirl.netlify.app/',
+    tags: ['休闲', '技巧', '放松'],
+  },
+  {
+    id: 'bus',
+    title: '田园巴士',
+    description: '驾驶乡村路线。接送乘客，欣赏风景。',
+    coverUrl: 'https://placehold.co/400x600/84cc16/black?text=Country+Bus',
+    path: 'https://countrybus.netlify.app/',
+    tags: ['驾驶', '模拟', '放松'],
+  },
+  {
+    id: 'raining',
+    title: '雨中修行',
+    description: '雨中打字游戏。保持输入流畅以保持干燥。',
+    coverUrl: 'https://placehold.co/400x600/3b82f6/white?text=Raining+Words',
+    path: 'https://rainingwords.netlify.app/',
+    tags: ['打字', '教育', '氛围'],
+  },
+  {
+    id: 'stream',
+    title: '拯救直播',
+    description: '管理混乱的直播间。让观众开心，让房管清醒。',
+    coverUrl: 'https://placehold.co/400x600/8b5cf6/white?text=Streamer',
+    path: 'https://savethestream.netlify.app/',
+    tags: ['管理', '街机', '现代'],
+  },
+  {
+    id: 'flyer',
+    title: '传单大师',
+    description: '给路人发传单。避免被拒绝。坚持到底。',
+    coverUrl: 'https://placehold.co/400x600/f43f5e/white?text=Flyer+Master',
+    path: 'https://superflyer.netlify.app/',
+    tags: ['动作', '街机', '搞笑'],
+  },
+  {
+    id: 'elevator',
+    title: '电梯按摩',
+    description: '世界上最尴尬的按摩服务。在电梯里。',
+    coverUrl: 'https://placehold.co/400x600/a8a29e/black?text=Elevator',
+    path: 'https://elevatormassage.netlify.app/',
+    tags: ['休闲', '搞笑', '奇葩'],
+  },
+  {
+    id: 'rhythm',
+    title: '节奏人生',
+    description: '跟随生活的节拍。一段关于日常生活的音乐旅程。',
+    coverUrl: 'https://placehold.co/400x600/db2777/white?text=Life+Rhythm',
+    path: 'https://liferythm.netlify.app/',
+    tags: ['音乐', '节奏', '独立'],
+  },
+  {
+    id: 'delivery',
+    title: '快递搁浅',
+    description: '包裹必须送达，无论障碍如何。搁浅是真实的。',
+    coverUrl: 'https://placehold.co/400x600/f97316/white?text=Delivery',
+    path: 'https://superdeliver.netlify.app/',
+    tags: ['动作', '快递', '科幻'],
+  },
+  {
+    id: 'coffee',
+    title: '快手咖啡师',
+    description: '订单堆积如山！高咖啡因人群的咖啡师模拟器。',
+    coverUrl: 'https://placehold.co/400x600/78350f/white?text=Coffee',
+    path: 'https://coffeerusher.netlify.app/',
+    tags: ['时间管理', '街机'],
+  },
+];
