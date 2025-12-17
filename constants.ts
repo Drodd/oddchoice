@@ -35,7 +35,7 @@ export const GAMES_LIST: Game[] = [
     titleEn: 'Coldplay Camera',
     description: '演唱会摄像师模拟。在人群中捕捉精彩瞬间。',
     coverUrl: 'https://placehold.co/400x600/ec4899/white?text=Coldplay+Camera',
-    path: 'https://seedao.netlify.app/',
+    path: 'https://kisscamer.netlify.app/',
     tags: ['街机', '派对'],
     releaseDate: '2025-07-25',
     story: '作为一名职业摄影师，什么该拍、什么不该拍，你…你为什么要在乎呢？本周遭遇野卡被喝茶，cursor无法续订。机缘尝试了Kimi新发的K2模型，无缝接入claude code，没想到挺能打的，期待多模态版本，祝国产模型越来越强！',
