@@ -14,7 +14,7 @@ interface GameCardProps {
 }
 
 // 游戏图标映射
-const gameIcons: Record<string, React.FC<{ className?: string }>> = {
+const gameIcons: Record<string, React.FC<{ className?: string; strokeWidth?: number }>> = {
   'ppt-master': Monitor,
   'wudao': Sparkles,
   'kiss-camera': Camera,
@@ -96,138 +96,141 @@ export const GameCard: React.FC<GameCardProps> = ({ game, onClick }) => {
   };
 
   return (
-    <div className="perspective-1000" style={{ perspective: '1000px' }}>
+    <div className="relative" style={{ perspective: '1000px' }}>
+      {/* Front Side */}
       <div 
-        className={`relative transition-transform duration-500 transform-style-preserve-3d`}
+        className={`relative bg-white border-2 border-black transition-all duration-500 ${
+          isFlipped ? 'opacity-0 invisible' : 'opacity-100 visible'
+        }`}
         style={{ 
+          transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
           transformStyle: 'preserve-3d',
-          transform: isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)'
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden',
         }}
       >
-        {/* Front Side */}
+        {/* Cover with Title */}
         <div 
-          className="relative bg-white border-2 border-black backface-hidden"
-          style={{ backfaceVisibility: 'hidden' }}
+          className="aspect-[3/4] w-full overflow-hidden relative border-b-2 border-black flex flex-col items-center justify-center p-4"
+          style={{ backgroundColor: bgColor }}
         >
-          {/* Cover with Title */}
-          <div 
-            className="aspect-[3/4] w-full overflow-hidden relative border-b-2 border-black flex flex-col items-center justify-center p-4"
-            style={{ backgroundColor: bgColor }}
-          >
-            {/* Silhouette Icon - Background */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-              <IconComponent className={`w-32 h-32 ${silhouetteColor}`} strokeWidth={1} />
-            </div>
-
-            {/* Title as Cover */}
-            <div className="relative z-[1] flex flex-col items-center">
-              <h3 
-                className={`text-2xl font-black ${textColor} leading-tight text-center mb-2`}
-                style={{ fontFamily: "'Noto Serif SC', 'Georgia', serif" }}
-              >
-                {game.title}
-              </h3>
-              <p 
-                className={`text-xs ${textColorSecondary} uppercase tracking-widest text-center`}
-                style={{ fontFamily: "'Space Mono', monospace" }}
-              >
-                {game.titleEn}
-              </p>
-            </div>
-
-            {/* Flip Button - Top Right */}
-            <button
-              onClick={handleFlip}
-              className="absolute top-2 right-2 z-10 bg-white/90 border-2 border-black p-1.5 
-                         hover:bg-black hover:text-white transition-colors"
-              title="查看创作故事"
-            >
-              <BookOpen className="w-4 h-4" />
-            </button>
-
-            {/* Tags - Bottom Left */}
-            <div className="absolute bottom-2 left-2 flex flex-wrap gap-1.5 z-10">
-              {game.tags.slice(0, 2).map(tag => (
-                <span key={tag} className="text-[10px] font-bold uppercase bg-white/90 border border-black px-1.5 py-0.5 text-black">
-                  {tag}
-                </span>
-              ))}
-            </div>
+          {/* Silhouette Icon - Background */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+            <IconComponent className={`w-32 h-32 ${silhouetteColor}`} strokeWidth={1} />
           </div>
 
-          {/* Content */}
-          <div className="p-4 bg-white">
-            <p className="text-stone-600 text-xs font-mono leading-relaxed line-clamp-3 mb-3">
-              {game.description}
-            </p>
-            
-            <div className="text-[10px] font-mono text-stone-400 mb-4">
-              {game.releaseDate}
-            </div>
-
-            {/* Play Button */}
-            <button
-              onClick={handlePlay}
-              className="w-full bg-[#e11d48] border-2 border-black py-2 px-4 
-                         font-bold uppercase text-white text-sm tracking-wider
-                         hover:bg-[#be123c] transition-colors
-                         shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]
-                         active:shadow-none active:translate-x-[3px] active:translate-y-[3px]
-                         flex items-center justify-center gap-2"
+          {/* Title as Cover */}
+          <div className="relative z-[1] flex flex-col items-center">
+            <h3 
+              className={`text-2xl font-black ${textColor} leading-tight text-center mb-2`}
+              style={{ fontFamily: "'Noto Serif SC', 'Georgia', serif" }}
             >
-              <Play className="w-4 h-4 fill-white" />
-              开始游戏
-            </button>
+              {game.title}
+            </h3>
+            <p 
+              className={`text-xs ${textColorSecondary} uppercase tracking-widest text-center`}
+              style={{ fontFamily: "'Space Mono', monospace" }}
+            >
+              {game.titleEn}
+            </p>
+          </div>
+
+          {/* Flip Button - Top Right */}
+          <button
+            onClick={handleFlip}
+            className="absolute top-2 right-2 z-10 bg-white/90 border-2 border-black p-1.5 
+                       hover:bg-black hover:text-white transition-colors"
+            title="查看创作故事"
+          >
+            <BookOpen className="w-4 h-4" />
+          </button>
+
+          {/* Tags - Bottom Left */}
+          <div className="absolute bottom-2 left-2 flex flex-wrap gap-1.5 z-10">
+            {game.tags.slice(0, 2).map(tag => (
+              <span key={tag} className="text-[10px] font-bold uppercase bg-white/90 border border-black px-1.5 py-0.5 text-black">
+                {tag}
+              </span>
+            ))}
           </div>
         </div>
 
-        {/* Back Side */}
-        <div 
-          className="absolute inset-0 bg-stone-900 border-2 border-black backface-hidden"
-          style={{ 
-            backfaceVisibility: 'hidden',
-            transform: 'rotateY(180deg)'
-          }}
-        >
-          {/* Flip Back Button */}
-          <button
-            onClick={handleFlip}
-            className="absolute top-2 right-2 z-10 bg-white border-2 border-black p-1.5 
-                       hover:bg-[#e11d48] hover:text-white transition-colors"
-            title="返回"
-          >
-            <RotateCcw className="w-4 h-4" />
-          </button>
-
-          <div className="h-full flex flex-col p-4">
-            {/* Title */}
-            <div className="border-b border-stone-700 pb-3 mb-4">
-              <h3 className="text-sm font-bold text-white leading-tight font-mono">
-                {formatDateChinese(game.releaseDate)}
-              </h3>
-            </div>
-            
-            {/* Story Content */}
-            <div className="flex-1 overflow-y-auto no-scrollbar">
-              <p className="text-stone-300 text-sm leading-relaxed font-mono">
-                {game.story}
-              </p>
-            </div>
-
-            {/* Play Button */}
-            <button
-              onClick={handlePlay}
-              className="mt-4 w-full bg-[#e11d48] border-2 border-black py-2 px-4 
-                         font-bold uppercase text-white text-sm tracking-wider
-                         hover:bg-[#be123c] transition-colors
-                         shadow-[3px_3px_0px_0px_rgba(255,255,255,0.2)]
-                         active:shadow-none active:translate-x-[3px] active:translate-y-[3px]
-                         flex items-center justify-center gap-2"
-            >
-              <Play className="w-4 h-4 fill-white" />
-              开始游戏
-            </button>
+        {/* Content */}
+        <div className="p-4 bg-white">
+          <p className="text-stone-600 text-xs font-mono leading-relaxed line-clamp-3 mb-3">
+            {game.description}
+          </p>
+          
+          <div className="text-[10px] font-mono text-stone-400 mb-4">
+            {game.releaseDate}
           </div>
+
+          {/* Play Button */}
+          <button
+            onClick={handlePlay}
+            className="w-full bg-[#e11d48] border-2 border-black py-2 px-4 
+                       font-bold uppercase text-white text-sm tracking-wider
+                       hover:bg-[#be123c] transition-colors
+                       shadow-[3px_3px_0px_0px_rgba(0,0,0,1)]
+                       active:shadow-none active:translate-x-[3px] active:translate-y-[3px]
+                       flex items-center justify-center gap-2"
+          >
+            <Play className="w-4 h-4 fill-white" />
+            开始游戏
+          </button>
+        </div>
+      </div>
+
+      {/* Back Side */}
+      <div 
+        className={`absolute inset-0 bg-stone-900 border-2 border-black transition-all duration-500 ${
+          isFlipped ? 'opacity-100 visible' : 'opacity-0 invisible'
+        }`}
+        style={{ 
+          transform: isFlipped ? 'rotateY(0deg)' : 'rotateY(-180deg)',
+          transformStyle: 'preserve-3d',
+          backfaceVisibility: 'hidden',
+          WebkitBackfaceVisibility: 'hidden',
+        }}
+      >
+        {/* Flip Back Button */}
+        <button
+          onClick={handleFlip}
+          className="absolute top-2 right-2 z-10 bg-white border-2 border-black p-1.5 
+                     hover:bg-[#e11d48] hover:text-white transition-colors"
+          title="返回"
+        >
+          <RotateCcw className="w-4 h-4" />
+        </button>
+
+        <div className="h-full flex flex-col p-4">
+          {/* Title */}
+          <div className="border-b border-stone-700 pb-3 mb-4">
+            <h3 className="text-sm font-bold text-white leading-tight font-mono">
+              {formatDateChinese(game.releaseDate)}
+            </h3>
+          </div>
+          
+          {/* Story Content */}
+          <div className="flex-1 overflow-y-auto no-scrollbar">
+            <p className="text-stone-300 text-sm leading-relaxed font-mono">
+              {game.story}
+            </p>
+          </div>
+
+          {/* Play Button */}
+          <button
+            onClick={handlePlay}
+            className="mt-4 w-full bg-[#e11d48] border-2 border-black py-2 px-4 
+                       font-bold uppercase text-white text-sm tracking-wider
+                       hover:bg-[#be123c] transition-colors
+                       shadow-[3px_3px_0px_0px_rgba(255,255,255,0.2)]
+                       active:shadow-none active:translate-x-[3px] active:translate-y-[3px]
+                       flex items-center justify-center gap-2"
+          >
+            <Play className="w-4 h-4 fill-white" />
+            开始游戏
+          </button>
         </div>
       </div>
     </div>
